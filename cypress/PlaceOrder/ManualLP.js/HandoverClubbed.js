@@ -26,12 +26,14 @@ function stringToBinary(str) {
     }
     return binaryArray.join(' ');
   }
+  for(let i=0;i<10;i++)
+  {
   describe('NONduplicateOrderflow',function()
   { 
     beforeEach('Login',function()
     {
        cy.visit("http://v2.nushop-dashboard.kaip.in/login/");
-       cy.get('.rs-input').type('7908961320')
+       cy.get('.rs-input').type('9495760332')
        cy.get('.Button_button-primary__9i0Rz').contains('Generate OTP').click()
        cy.wait(2000)
        cy.get('.rs-input').type('0000') 
@@ -82,7 +84,7 @@ function stringToBinary(str) {
   })
       cy.get('.Flexbox_flex-row__aKbHb > .rs-flex-box-grid-item-5 > [data-sd-event="logisticHandOver"]').eq(0).click()
         .then(()=>{
-        cy.get(':nth-child(4) > .Input_input-group__c6y0f').clear().type('736135')
+        cy.get(':nth-child(4) > .Input_input-group__c6y0f').clear().type('700019')
         cy.get('.rs-drawer-actions > .Button_button-primary__9i0Rz').click()
         cy.get('.rs-modal-footer > .Button_button-primary__9i0Rz').click()
         cy.wait(4000)
@@ -120,11 +122,10 @@ function stringToBinary(str) {
         if(Awb != NewAWB)
         {
       cy.wait(2000)
-     // cy.get('.rs-modal-footer >').contains('Print All').click()
+      cy.get('.rs-modal-footer >').contains('Print All').click()
       cy.wait('@res').then(({request , response}) =>
         {
          const labellink = response.body.data.url
-         // Remove the specified substring 
          cy.wrap(labellink).as('label')
         })
         }
@@ -148,6 +149,8 @@ function stringToBinary(str) {
     cy.wait(10000)
     cy.task('readPdf',PdfContent).should('contain', orderid)
     cy.task('readPdf',PdfContent).should('contain',NewAWB)
+    cy.task('readPdf',PdfContent).should('contain','700019')
+
   })
   })
   })     
@@ -159,3 +162,4 @@ function stringToBinary(str) {
     })
    })
  }) // closing braces of describe block
+}

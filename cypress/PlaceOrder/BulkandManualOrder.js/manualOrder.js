@@ -39,7 +39,6 @@ describe('Placeorder/Catalogue/SingleNormalOrder/Discountfunctionality',function
           .type('Jcr layout panathur bangalore')
         cy.get('.rs-btn-toolbar > :nth-child(2)').click()
         cy.get('.Flexbox_mt-lg__HQln6 > .Button_button-primary__9i0Rz').click()
-        //cy.get('.rs-col-xl-18 > .Card_card__DkrpZ > .Flexbox_flex-row__aKbHb > .rs-btn-toolbar > .Button_button-primary__9i0Rz').click()
   })
      it('Manual Order',function()
        {
@@ -71,8 +70,7 @@ describe('Placeorder/Catalogue/SingleNormalOrder/Discountfunctionality',function
         cy.wait(1000)
         cy.get('.ReviewOrder_review-order-cta__Slqfv > .Button_button-primary__9i0Rz').contains('Place order').click()
         cy.wait(2000)
-        cy.get('.SuccessOrderPlaced_download-cta__2VCmc > :nth-child(1)').click()
-        cy.get('.SuccessOrderPlaced_download-cta__2VCmc > :nth-child(1)').click()
+        //cy.get('.SuccessOrderPlaced_download-cta__2VCmc > :nth-child(1)').click()
         cy.get('.SuccessOrderPlaced_success-order-placed__TT0w1 > :nth-child(3) > :nth-child(2)').then(($text) =>
           {
            orderid = $text.text()
@@ -83,18 +81,6 @@ describe('Placeorder/Catalogue/SingleNormalOrder/Discountfunctionality',function
               invoiceid = $invoice.text()
             cy.log(invoiceid)
         })
-        
-         /*cy.request('expectedFile').then(expectedFile => cy
-          .waitUntil(() => cy
-            .task('getLastDownloadFilePath')
-            .then(result => result),
-          { timeout: 3000, interval: 100 })
-          .then(filePath => {
-            cy.readFile(filePath).should(actualFile => {
-              // assertion goes here
-            cy.contains(orderid)
-            });
-          })*/
         })
       })
      

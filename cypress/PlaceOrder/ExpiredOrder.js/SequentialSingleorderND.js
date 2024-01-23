@@ -38,7 +38,7 @@ function stringToBinary(str) {
         )
         cy.get('.SideNav_sidenav-item-container__PAVyt > :nth-child(3)').click()
         cy.get(':nth-child(4) > :nth-child(2) > .Flexbox_flex-row__aKbHb > .Text_body1__jlAQm').click()
-        cy.get('[href="/orders/process-orders"] > .Text_body2__0FftJ').click()
+        cy.get('[href="/orders/process-orders"] > .Flexbox_flex-row__aKbHb > .Text_body2__0FftJ').click()
         cy.wait(5000)
     })
     it('Expired Single AWB', function () {
@@ -83,8 +83,10 @@ cy.get('.rs-btn-toolbar > .Button_button-ghost__rieSu').contains('Apply Filters'
             });
       
             // Click Confirm button
-            cy.get('button[class="Button_button-ghost__rieSu button-loading-undefined rs-btn rs-btn-ghost rs-btn-md"]').contains('Confirm').click();
-      
+            cy.get('.rs-modal-content').within(()=>{
+              cy.get('[data-sd-event="confirmExpiredAWBRegenerate"]').contains('Confirm').click()
+
+              })      
             // Check if AWB regenerated successfully
           //  from here the testing in print starts
                 cy.get(':nth-child(1) > .tab').click();

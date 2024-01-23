@@ -27,7 +27,7 @@ describe('Manual LP',function()
   beforeEach('Login',function()
   {
      cy.visit("http://v2.nushop-dashboard.kaip.in/login/");
-     cy.get('.rs-input').type('8653215954')
+     cy.get('.rs-input').type('8309333400')
      cy.get('.Button_button-primary__9i0Rz').contains('Generate OTP').click()
      cy.wait(2000)
      cy.get('.rs-input').type('0000') 
@@ -57,7 +57,6 @@ describe('Manual LP',function()
 
  it('PincodeCHangeAndVerification',function()
  {
-    var data = 0 ;
     cy.get('.rs-col-lg-5.rs-col-md-5 > .Text_body3__jmTqb').click()
     cy.get('div[class="ButtonGroup_buttongroup-container__Q+BiA rs-btn-group"]').contains('Clubbed').click()
     cy.get('.rs-flex-box-grid-item-4 > .rs-picker > .rs-picker-toggle').click().then(()=>
@@ -67,7 +66,7 @@ describe('Manual LP',function()
 
     cy.get('.rs-btn-toolbar > .Button_button-ghost__rieSu').click()
     cy.wait(2000)   
-    cy.get('div[class="PrintPackViewCard_card-border__Qk1I3"]').eq(data).within(()=>
+    cy.get('div[class="PrintPackViewCard_card-border__Qk1I3"]').eq(0).within(()=>
     {
     cy.get('.rs-col-md-6 > .Text_subtitles-colored__s5ggG.Text_cursor-pointer__vwE5X').then(($p1)=>
     {
@@ -82,7 +81,7 @@ describe('Manual LP',function()
    }).then(()=>{
         cy.get(':nth-child(4) > .Input_input-group__c6y0f').clear()
         cy.wait(2000)
-        cy.get(':nth-child(4) > .Input_input-group__c6y0f').click().type('736135')
+        cy.get(':nth-child(4) > .Input_input-group__c6y0f').click().type('700019')
         cy.wait(2000)
         cy.get('.rs-drawer-actions > .Button_button-primary__9i0Rz').click()
         cy.get('.rs-modal-footer > .Button_button-primary__9i0Rz').click()
@@ -150,7 +149,8 @@ describe('Manual LP',function()
     cy.wait(10000)
     cy.task('readPdf',PdfContent).should('contain',orderid)
     cy.task('readPdf',PdfContent).should('contain',newawb)
-    data = data + 1;
+    cy.task('readPdf',PdfContent).should('contain','700019')
+
 
   })
   })

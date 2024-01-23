@@ -24,16 +24,13 @@ describe('Placeorderhappyflow',function()
   beforeEach('Login',function()
   {
      cy.visit("http://v2.nushop-dashboard.kaip.in/login/");
-     cy.get('.rs-input').type('7908961320')
+     cy.get('.rs-input').type('9495760332')
      cy.get('.Button_button-primary__9i0Rz').contains('Generate OTP').click()
      cy.wait(2000)
      cy.get('.rs-input').type('0000') 
      cy.get('.Button_button-primary__9i0Rz').contains('Verify OTP').click()
      cy.on('window:confirm',(str)=>
      {
-         cy.get('.SideNav_sidenav-item-container__PAVyt > :nth-child(3)').click()
-         cy.get(':nth-child(4) > :nth-child(2) > .Flexbox_flex-row__aKbHb > .Text_body1__jlAQm').click()
-         cy.get('[href="/orders/process-orders"] > .Text_body2__0FftJ').click()
          cy.wait(5000)            
      }
      )
@@ -46,8 +43,13 @@ describe('Placeorderhappyflow',function()
  it('LabelofDuplicate',function()
  { 
     var data = 0 ;
+    
     cy.get('.rs-col-xl-4.rs-col-sm-7 > :nth-child(1) > .Flexbox_flex-row__aKbHb > .Text_body3__jmTqb').click()
     cy.wait(2000)
+    cy.get('.Table_margin-top__WE3dn > :nth-child(2) > .rs-picker > .rs-picker-toggle').click()
+    cy.get('.rs-anim-fade').within(()=>{
+    cy.get('[data-key="100"] > .rs-picker-select-menu-item').click()
+    })
     cy.get('div[class="Flexbox_flex-row__aKbHb Flexbox_align-stretch__jf368 Flexbox_nowrap__8vOkG rs-flex-box-grid rs-flex-box-grid-top rs-flex-box-grid-start"]').each(($p1,number,$queue)=>
     {   
     cy.get('div[class="Flexbox_flex-row__aKbHb Flexbox_align-stretch__jf368 Flexbox_nowrap__8vOkG rs-flex-box-grid rs-flex-box-grid-top rs-flex-box-grid-start"]').eq(data).within(()=>
@@ -87,7 +89,7 @@ describe('Placeorderhappyflow',function()
   cy.get('@label').then((label)=>
   {
     cy.log(AWB)
-    const awb = AWB.substring(5,AWB.length-1)
+    const awb = AWB.substring(5)
     cy.log(awb)
     cy.log(label)
     const labellink = label.substring(51,(label.length))  
@@ -100,8 +102,8 @@ describe('Placeorderhappyflow',function()
      })
     })
    })
+   data = data + 1;
   })
-data = data + 1;
  })
 })
  

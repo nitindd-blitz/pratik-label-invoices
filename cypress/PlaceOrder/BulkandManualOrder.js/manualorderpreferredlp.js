@@ -72,8 +72,7 @@ describe('Placeorder/Catalogue/SingleNormalOrder/Discountfunctionality',function
 cy.wait(1000)
 cy.get('.ReviewOrder_review-order-cta__Slqfv > .Button_button-primary__9i0Rz').contains('Place order').click()
 cy.wait(2000)
-cy.get('.SuccessOrderPlaced_download-cta__2VCmc > :nth-child(1)').click()
-cy.get('.SuccessOrderPlaced_download-cta__2VCmc > :nth-child(1)').click()
+//cy.get('.SuccessOrderPlaced_download-cta__2VCmc > :nth-child(1)').click()
 cy.get('.SuccessOrderPlaced_success-order-placed__TT0w1 > :nth-child(3) > :nth-child(2)').then(($text) =>
           {
            orderid = $text.text()

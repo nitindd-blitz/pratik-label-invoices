@@ -69,11 +69,10 @@ let count;
       })
     cy.get('.rs-btn-toolbar > .Button_button-ghost__rieSu').contains('Apply Filters').click()
        .then(()=>{
-    cy.get('div[class="HandoverChildViewCard_card__6hKXd"]').each(($e1,index,list)=>{
+    cy.get('div[class="HandoverChildViewCard_card__6hKXd"]').eq(0).then(()=>{
     //cy.get('.HandoverCard_flex-box-wrapper__PRITZ > .HandoverCard_right-arrow-icon__kBHoD').eq(0).click()
     cy.wait(2000)
-    cy.get('div[class="HandoverChildViewCard_card__6hKXd"]').each(($p1,num,sequence)=>{
-    cy.get('.Flexbox_flex-row__aKbHb > .rs-flex-box-grid-item-5 > [data-sd-event="detailsHandover"]').eq(num).click({force: true})
+    cy.get('.Flexbox_flex-row__aKbHb > .rs-flex-box-grid-item-5 > [data-sd-event="detailsHandover"]').eq(0).click({force: true})
         .then(()=>{
           cy.get('div[class="HandoverChildViewCard_card__6hKXd"]').then(()=>
           {
@@ -96,6 +95,7 @@ let count;
                       if(id1===id2)
                       {
                       id1 = order.substring(12)
+
                       cy.log(id1)
                       }
                       else
@@ -110,7 +110,6 @@ let count;
        })
       })
      })
-    })
    })
   })
  })
@@ -120,7 +119,7 @@ it('CancelWebsiteflow',function()
     cy.visit('http://pratikj.nushop.kaip.in/')
     cy.wait(4000)
     //cy.get('div[class="css-2f3j1g"]').click()
-    cy.get(':nth-child(2) > .css-6sjl2w-X > .css-1tu2nel').click()
+    cy.get('.css-12d75xc > .css-zixo5y > .css-2f3j1g').click()
     cy.get('.css-1vw8438').type('7908961320')
     cy.wait(4000)
     cy.get('.css-2f3j1g').click()
@@ -161,7 +160,7 @@ it('CancelWebsiteflow',function()
     cy.wait(10000)
     cy.get('.SideNav_sidenav-item-container__PAVyt > :nth-child(3)').click()
     cy.get(':nth-child(4) > :nth-child(2) > .Flexbox_flex-row__aKbHb > .Text_body1__jlAQm').click()
-    cy.get('[href="/orders/process-orders"] > .Text_body2__0FftJ').click()
+    cy.get('[href="/orders/process-orders"] > .Flexbox_flex-row__aKbHb > .Text_body2__0FftJ').click()
     cy.wait(5000)   
     cy.get('.rs-col-lg-5.rs-col-md-5 > .Text_body3__jmTqb').click()
     //dividing on count of clubbing that was present

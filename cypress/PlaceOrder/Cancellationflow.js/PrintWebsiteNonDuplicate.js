@@ -43,20 +43,16 @@ let count;
   {
     cy.visit('http://v2.nushop-dashboard.kaip.in/')
     cy.visit("http://v2.nushop-dashboard.kaip.in/login/");
-    cy.get('.rs-input').type('7908961320')
+    cy.get('.rs-input').type('9495760332')
     cy.get('.Button_button-primary__9i0Rz').contains('Generate OTP').click()
     cy.wait(2000)
     cy.get('.rs-input').type('0000') 
     cy.get('.Button_button-primary__9i0Rz').contains('Verify OTP').click()
     cy.wait(10000)
-    cy.get('.rs-modal-content').then(()=>{
-        cy.get('.Button_button-ghost__rieSu').click()
-        })
-    
-        cy.get('.SideNav_sidenav-item-container__PAVyt > :nth-child(3)').click()
-        cy.get(':nth-child(4) > :nth-child(2) > .Flexbox_flex-row__aKbHb > .Text_body1__jlAQm').click()
-        cy.get('[href="/orders/process-orders"] > .Text_body2__0FftJ').click()
-        cy.wait(5000)            
+    cy.get('.SideNav_sidenav-item-container__PAVyt > :nth-child(3)').click()
+    cy.get(':nth-child(4) > :nth-child(2) > .Flexbox_flex-row__aKbHb > .Text_body1__jlAQm').click()
+    cy.get('[href="/orders/process-orders"] > .Flexbox_flex-row__aKbHb > .Text_body2__0FftJ').click()
+    cy.wait(5000)            
         .then(()=>{
     cy.get('.rs-col-lg-5.rs-col-md-5 > .Text_body3__jmTqb').click().then(()=>{
       cy.wait(1000)
@@ -136,30 +132,25 @@ let count;
   
 it('CancelWebsiteflow',function()
   {
-    cy.visit('http://pratikj.nushop.kaip.in/')
+    cy.visit('http://vishnutesting.nushop.kaip.in/')
     cy.wait(4000)
-    //cy.get('div[class="css-2f3j1g"]').click()
-    cy.get(':nth-child(2) > .css-6sjl2w-X > .css-1tu2nel').click()
-    cy.get('.css-1vw8438').type('7908961320')
+    cy.get('.css-mdobda-N > .css-1tu2nel').click()
+    cy.get('.css-r5asnw').type('9495760332')
     cy.wait(4000)
     cy.get('.css-2f3j1g').click()
-    cy.get('.css-tpv9t0').each(($e1,index,list)=>
+    cy.get('.css-1gk8o65').each(($e1,index,list)=>
     {
-      cy.get('.css-tpv9t0').eq(index).type('0')
+      cy.get('.css-1gk8o65').eq(index).type('0')
     })
     cy.get('.css-2f3j1g').click()
     cy.wait(5000)
-
-
-
-
-    let link = 'http://pratikj.nushop.kaip.in/orders/'
+    let link = 'http://vishnutesting.nushop.kaip.in/orders/'
     cy.log(web_cancel)
     let web_link =link+web_cancel
     cy.log(web_link)
     cy.visit(web_link)
-    cy.wait(5000)
-    cy.get('.css-19qf114 > .css-2f3j1g').click()
+    cy.wait(10000)
+    cy.get(':nth-child(2) > .css-12d75xc > .css-1tu2nel').click()
     cy.wait(2000)
     cy.get('#found_better_product_on_another_website').click().then(()=>{
       cy.get('div[class="css-1b6cfry"]').each(($e1,index,list)=>
@@ -171,16 +162,11 @@ it('CancelWebsiteflow',function()
       })
       cy.wait(10000)
           })
-
-
-
-
-
-  })
+    })
   it('dashboarVerificationFlow',function()
   {
     cy.visit("http://v2.nushop-dashboard.kaip.in/login/");
-    cy.get('.rs-input').type('7908961320')
+    cy.get('.rs-input').type('9495760332')
     cy.get('.Button_button-primary__9i0Rz').contains('Generate OTP').click()
     cy.wait(2000)
     cy.get('.rs-input').type('0000') 

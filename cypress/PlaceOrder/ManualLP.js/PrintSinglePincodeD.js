@@ -11,7 +11,6 @@ const fs = require('fs');
 const pdf = require('pdf-parse');
 var invoiceid;
 var labelpdf = '';
-var data = 0;
 function stringToBinary(str) {
     const binaryArray = [];
     for (let i = 0; i < str.length; i++) {
@@ -27,7 +26,7 @@ describe('Manual LP',function()
   beforeEach('Login',function()
   {
      cy.visit("http://v2.nushop-dashboard.kaip.in/login/");
-     cy.get('.rs-input').type('7908961320')
+     cy.get('.rs-input').type('9495760332')
      cy.get('.Button_button-primary__9i0Rz').contains('Generate OTP').click()
      cy.wait(2000)
      cy.get('.rs-input').type('0000') 
@@ -65,7 +64,7 @@ describe('Manual LP',function()
     })
     cy.get('.rs-btn-toolbar > .Button_button-ghost__rieSu').click()
     cy.wait(2000)   
-    cy.get('div[class="PrintPackViewCard_card-border__Qk1I3"]').eq(data).within(()=>
+    cy.get('div[class="PrintPackViewCard_card-border__Qk1I3"]').eq(0).within(()=>
     {
     cy.get('.rs-col-md-6 > .Text_subtitles-colored__s5ggG.Text_cursor-pointer__vwE5X').then(($p1)=>
     {
@@ -77,11 +76,11 @@ describe('Manual LP',function()
     })
     cy.get('.PrintPackViewCard_card__Y4Iaa > :nth-child(2) > .rs-col-lg-3 > .action-btns-wrapper > :nth-child(3)').click()//Clicking the Logistics CTA
     }) .then(()=>{
-        cy.get(':nth-child(4) > .Input_input-group__c6y0f').clear().type('736135')
+        cy.get(':nth-child(4) > .Input_input-group__c6y0f').clear().type('700019')
         cy.get('.rs-drawer-actions > .Button_button-primary__9i0Rz').click()
         cy.get('.rs-modal-footer > .Button_button-primary__9i0Rz').click()
         cy.wait(2000)
-        cy.get('div[class="PrintPackViewCard_card-border__Qk1I3"]').eq(data).within(()=>
+        cy.get('div[class="PrintPackViewCard_card-border__Qk1I3"]').eq(0).within(()=>
     {
     cy.get('.rs-col-md-6 > .Text_subtitles-colored__s5ggG.Text_cursor-pointer__vwE5X').then(($p1)=>
      {
@@ -93,7 +92,7 @@ describe('Manual LP',function()
     {
     cy.wait(7000)
     cy.intercept('POST','http://v2.nushop-dashboard.kaip.in/api/order-process/report/labels-v2/created').as('res')
-    cy.get('.action-btns-wrapper > .Button_button-primary__9i0Rz').eq(data).click()
+    cy.get('.action-btns-wrapper > .Button_button-primary__9i0Rz').eq(0).click()
     })
   
   cy.get('@NewAWB').then((NewAWB)=>
@@ -136,6 +135,8 @@ describe('Manual LP',function()
     cy.wait(10000)
     cy.task('readPdf',PdfContent).should('contain', orderid)
     cy.task('readPdf',PdfContent).should('contain',newawb)
+    cy.task('readPdf',PdfContent).should('contain','700019')
+
   })
   })
   })     
@@ -143,6 +144,5 @@ describe('Manual LP',function()
       })
    })
   })
-  data = data + 1 ;
  }
  

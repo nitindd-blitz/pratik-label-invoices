@@ -26,7 +26,7 @@ describe('Manual LP',function()
   beforeEach('Login',function()
   {
      cy.visit("http://v2.nushop-dashboard.kaip.in/login/");
-     cy.get('.rs-input').type('8653215954')
+     cy.get('.rs-input').type('9495760332')
      cy.get('.Button_button-primary__9i0Rz').contains('Generate OTP').click()
      cy.wait(2000)
      cy.get('.rs-input').type('0000') 
@@ -65,7 +65,7 @@ describe('Manual LP',function()
     })
     cy.get('.rs-btn-toolbar > .Button_button-ghost__rieSu').click()
     cy.wait(2000)   
-    cy.get('div[class="PrintPackViewCard_card-border__Qk1I3"]').eq(data).within(()=>
+    cy.get('div[class="PrintPackViewCard_card-border__Qk1I3"]').eq(0).within(()=>
     {
     cy.get('.rs-col-md-6 > .Text_subtitles-colored__s5ggG.Text_cursor-pointer__vwE5X').then(($p1)=>
     {
@@ -81,7 +81,7 @@ describe('Manual LP',function()
         cy.get(' .ShippingPartner_shipping-partner-card-wrapper__hpb2y > .ShippingPartner_card-content-wrapper__NHAQH > .Text_body3__jmTqb').each(($z1,index,list)=>
         {
             var p=$z1.text()
-            if(p.includes('DELHIVERY SURFACE'))
+            if(p.includes('EKART'))
             {
                 cy.get(' .ShippingPartner_shipping-partner-card-wrapper__hpb2y > .ShippingPartner_card-content-wrapper__NHAQH > .Text_body3__jmTqb').eq(index).click()    
             }
@@ -89,7 +89,7 @@ describe('Manual LP',function()
         cy.get('.rs-drawer-actions > .Button_button-primary__9i0Rz').click()
         cy.get('.rs-modal-footer > .Button_button-primary__9i0Rz').click()
         cy.wait(2000)
-        cy.get('div[class="PrintPackViewCard_card-border__Qk1I3"]').eq(data).within(()=>
+        cy.get('div[class="PrintPackViewCard_card-border__Qk1I3"]').eq(0).within(()=>
     {
     cy.get('.rs-col-md-6 > .Text_subtitles-colored__s5ggG.Text_cursor-pointer__vwE5X').then(($p1)=>
      {
@@ -101,7 +101,7 @@ describe('Manual LP',function()
     {
     cy.wait(7000)
     cy.intercept('POST','http://v2.nushop-dashboard.kaip.in/api/order-process/report/labels-v2/created').as('res')
-    cy.get('.action-btns-wrapper > .Button_button-primary__9i0Rz').eq(data).click()
+    cy.get('.action-btns-wrapper > .Button_button-primary__9i0Rz').eq(0).click()
     })
   
   cy.get('@NewAWB').then((NewAWB)=>
@@ -144,9 +144,7 @@ describe('Manual LP',function()
     cy.wait(10000)
     cy.task('readPdf',PdfContent).should('contain', orderid)
     cy.task('readPdf',PdfContent).should('contain',newawb)
-    cy.task('readPdf',PdfContent).should('contain','DELHIVERY\tSURFACE')
-    data = data + 1 ;
-
+    cy.task('readPdf',PdfContent).should('contain','EKART')
   })
   })
   })     

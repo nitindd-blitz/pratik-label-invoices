@@ -26,12 +26,14 @@ function stringToBinary(str) {
     }
     return binaryArray.join(' ');
   }
+  for(let i=0;i<10;i++)
+  {
   describe('NONduplicateOrderflow',function()
   { 
     beforeEach('Login',function()
     {
        cy.visit("http://v2.nushop-dashboard.kaip.in/login/");
-       cy.get('.rs-input').type('7908961320')
+       cy.get('.rs-input').type('9495760332')
        cy.get('.Button_button-primary__9i0Rz').contains('Generate OTP').click()
        cy.wait(2000)
        cy.get('.rs-input').type('0000') 
@@ -69,7 +71,7 @@ function stringToBinary(str) {
     cy.wait(2000)
     cy.get('div[class="HandoverChildViewCard_card__6hKXd"]').eq(0).within(()=>{
     cy.get('.Flexbox_flex-row__aKbHb > .rs-flex-box-grid-item-8 > :nth-child(2)').then(($p1)=>{
-    var id1 = $p1.text().substring(9)
+    var id1 = $p1.text().substring(10)
     cy.wrap(id1).as('orderid')
     cy.log(id1)
     })
@@ -153,3 +155,4 @@ function stringToBinary(str) {
     })
    })
  }) // closing braces of describe block
+}

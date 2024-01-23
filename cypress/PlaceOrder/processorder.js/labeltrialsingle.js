@@ -24,7 +24,7 @@ describe('Placeorderhappyflow',function()
   beforeEach('Login',function()
   {
      cy.visit("http://v2.nushop-dashboard.kaip.in/login/");
-     cy.get('.rs-input').type('9093498343')
+     cy.get('.rs-input').type('7908961320')
      cy.get('.Button_button-primary__9i0Rz').contains('Generate OTP').click()
      cy.wait(2000)
      cy.get('.rs-input').type('0000') 
@@ -33,7 +33,7 @@ describe('Placeorderhappyflow',function()
      {
          cy.get('.SideNav_sidenav-item-container__PAVyt > :nth-child(3)').click()
          cy.get(':nth-child(4) > :nth-child(2) > .Flexbox_flex-row__aKbHb > .Text_body1__jlAQm').click()
-         cy.get('[href="/orders/process-orders"] > .Text_body2__0FftJ').click()
+         cy.get('[href="/orders/process-orders"] > .Flexbox_flex-row__aKbHb > .Text_body2__0FftJ').click()
          cy.wait(5000)            
      }
      )

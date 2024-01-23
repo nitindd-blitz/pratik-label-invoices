@@ -26,6 +26,7 @@ function stringToBinary(str) {
     }
     return binaryArray.join(' ');
   }
+
   describe('NONduplicateOrderflow',function()
   { 
     beforeEach('Login',function()
@@ -154,6 +155,7 @@ function stringToBinary(str) {
       cy.get('[data-sd-event="printAnyways"]')
     })*/
   //cross checking with olderids and AWB captured in EXpired section
+ // cy.get('.rs-modal-footer >').contains('Print Anyways').click()
   cy.get('@AWB').then((AWB)=>
     {
   cy.get('@NewAWB').then((NewAWB)=>

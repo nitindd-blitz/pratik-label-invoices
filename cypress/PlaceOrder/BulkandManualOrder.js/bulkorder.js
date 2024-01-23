@@ -7,7 +7,7 @@ describe('bulk order placement',function()
    {
         cy.visit("http://v2.nushop-dashboard.kaip.in/login/");
         cy.wait(10000)
-        cy.get('.rs-input').type('8309333400')
+        cy.get('.rs-input').type('7908961320')
         cy.get('.Button_button-primary__9i0Rz').contains('Generate OTP').click()
         cy.wait(2000)
         cy.get('.rs-input').type('0000') 

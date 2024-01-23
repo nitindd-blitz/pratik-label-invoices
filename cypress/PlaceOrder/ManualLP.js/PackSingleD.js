@@ -10,6 +10,7 @@ const fs = require('fs');
 const pdf = require('pdf-parse');
 var invoiceid;
 var labelpdf = '';
+var data = 0;
 function stringToBinary(str) {
     const binaryArray = [];
     for (let i = 0; i < str.length; i++) {
@@ -25,7 +26,7 @@ describe('Manual LP',function()
   beforeEach('Login',function()
   {
      cy.visit("http://v2.nushop-dashboard.kaip.in/login/");
-     cy.get('.rs-input').type('8653215954')
+     cy.get('.rs-input').type('9495760332')
      cy.get('.Button_button-primary__9i0Rz').contains('Generate OTP').click()
      cy.wait(2000)
      cy.get('.rs-input').type('0000') 
@@ -54,7 +55,6 @@ describe('Manual LP',function()
 
  it('PincodeCHangeAndVerification',function()
  {
-     var data = 0;
     //cy.get('.rs-flex-box-grid-item-4 > .rs-picker > .rs-picker-toggle').click()
     cy.get('.TableHeader_card-container-header__rp1eA > :nth-child(4) > .Text_body3__jmTqb').click()
     cy.get('div[class="ButtonGroup_buttongroup-container__Q+BiA rs-btn-group"]').contains('Pack').click()

@@ -74,7 +74,7 @@ describe('Manual LP',function()
     cy.get('.action-btns-wrapper > :nth-child(3)').contains('Logistic').click()//Clicking the Logistics CTA
     }) .then(()=>{
         cy.get(':nth-child(4) > .Input_input-group__c6y0f').clear()
-        cy.get(':nth-child(4) > .Input_input-group__c6y0f').type('736135')
+        cy.get(':nth-child(4) > .Input_input-group__c6y0f').type('700019')
         cy.get('.rs-drawer-actions > .Button_button-primary__9i0Rz').click()
         cy.get('.rs-modal-footer > .Button_button-primary__9i0Rz').click()
         cy.wait(2000)
@@ -138,7 +138,7 @@ describe('Manual LP',function()
     cy.wait(10000)
     cy.task('readPdf',PdfContent).should('contain', orderid)
     cy.task('readPdf',PdfContent).should('contain',newawb)
-    cy.task('readPdf',PdfContent).should('contain','736135')
+    cy.task('readPdf',PdfContent).should('contain','700019')
     cy.log(data)
     data = data + 1 ;
   })

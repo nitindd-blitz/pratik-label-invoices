@@ -52,7 +52,7 @@ let count;
     
         cy.get('.SideNav_sidenav-item-container__PAVyt > :nth-child(3)').click()
         cy.get(':nth-child(4) > :nth-child(2) > .Flexbox_flex-row__aKbHb > .Text_body1__jlAQm').click()
-        cy.get('[href="/orders/process-orders"] > .Text_body2__0FftJ').click()
+        cy.get('[href="/orders/process-orders"] > .Flexbox_flex-row__aKbHb > .Text_body2__0FftJ').click()
         cy.wait(5000)            
         .then(()=>{
     cy.get('.rs-col-lg-5.rs-col-md-5 > .Text_body3__jmTqb').click().then(()=>{
@@ -135,8 +135,7 @@ it('CancelWebsiteflow',function()
   {
     cy.visit('http://pratikj.nushop.kaip.in/')
     cy.wait(4000)
-    //cy.get('div[class="css-2f3j1g"]').click()
-    cy.get(':nth-child(2) > .css-6sjl2w-X > .css-1tu2nel').click()
+    cy.get('.css-12d75xc > .css-zixo5y > .css-2f3j1g').click()
     cy.get('.css-1vw8438').type('7908961320')
     cy.wait(4000)
     cy.get('.css-2f3j1g').click()
@@ -146,10 +145,6 @@ it('CancelWebsiteflow',function()
     })
     cy.get('.css-2f3j1g').click()
     cy.wait(5000)
-
-
-
-
     let link = 'http://pratikj.nushop.kaip.in/orders/'
     cy.log(web_cancel)
     let web_link =link+web_cancel
@@ -168,12 +163,7 @@ it('CancelWebsiteflow',function()
       })
       cy.wait(10000)
           })
-
-
-
-
-
-  })
+   })
   it('dashboarVerificationFlow',function()
   {
     cy.visit("http://v2.nushop-dashboard.kaip.in/login/");
@@ -185,7 +175,7 @@ it('CancelWebsiteflow',function()
     cy.wait(10000)
     cy.get('.SideNav_sidenav-item-container__PAVyt > :nth-child(3)').click()
     cy.get(':nth-child(4) > :nth-child(2) > .Flexbox_flex-row__aKbHb > .Text_body1__jlAQm').click()
-    cy.get('[href="/orders/process-orders"] > .Text_body2__0FftJ').click()
+    cy.get('[href="/orders/process-orders"] > .Flexbox_flex-row__aKbHb > .Text_body2__0FftJ').click()
     cy.wait(5000)   
     cy.get('.rs-col-lg-5.rs-col-md-5 > .Text_body3__jmTqb').click()
     //dividing on count of clubbing that was present

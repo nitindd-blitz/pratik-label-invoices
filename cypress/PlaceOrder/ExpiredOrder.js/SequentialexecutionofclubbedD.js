@@ -46,7 +46,7 @@ function stringToBinary(str) {
         )
         cy.get('.SideNav_sidenav-item-container__PAVyt > :nth-child(3)').click()
         cy.get(':nth-child(4) > :nth-child(2) > .Flexbox_flex-row__aKbHb > .Text_body1__jlAQm').click()
-        cy.get('[href="/orders/process-orders"] > .Text_body2__0FftJ').click()
+        cy.get('[href="/orders/process-orders"] > .Flexbox_flex-row__aKbHb > .Text_body2__0FftJ').click()
         cy.wait(5000)
     })
     it('Expired Clubbed AWB', function () {
@@ -102,8 +102,10 @@ function stringToBinary(str) {
             
       
             // Click Confirm button
-            cy.get('button[class="Button_button-ghost__rieSu button-loading-undefined rs-btn rs-btn-ghost rs-btn-md"]').contains('Confirm').click();
-      
+            cy.get('.rs-modal-content').within(()=>{
+              cy.get('[data-sd-event="confirmExpiredAWBRegenerate"]').contains('Confirm').click()
+
+              })      
             // Check if AWB regenerated successfully
            //  from here the testing in print starts
                 cy.get(':nth-child(1) > .tab').click();
@@ -135,7 +137,9 @@ function stringToBinary(str) {
     cy.intercept('POST','http://v2.nushop-dashboard.kaip.in/api/order-process/report/labels-v2/created').as('res')
     cy.get('.action-btns-wrapper > .Button_button-primary__9i0Rz').click()
     })
-  // cy.get('.rs-modal-footer >').contains('Print Anyways').click()
+   cy.get('.rs-modal-footer >').within(()=>{
+   cy.get('.rs-modal-footer > .Button_button-ghost__rieSu').click()
+   })
   
   //cross checking with olderids and AWB captured in EXpired section
   cy.get('@order').then((order)=>
@@ -220,8 +224,10 @@ function stringToBinary(str) {
     
 
     // Click Confirm button
-    cy.get('button[class="Button_button-ghost__rieSu button-loading-undefined rs-btn rs-btn-ghost rs-btn-md"]').contains('Confirm').click();
+    cy.get('.rs-modal-content').within(()=>{
+      cy.get('[data-sd-event="confirmExpiredAWBRegenerate"]').contains('Confirm').click()
 
+      })
     // Check if AWB regenerated successfully
    //  from here the testing in print starts
         cy.get(':nth-child(1) > .tab').click();
@@ -231,7 +237,13 @@ function stringToBinary(str) {
         cy.get('@order').then((order) => {
           // Log the orderid again
           cy.log(order);
-          cy.get('button[class="Button_button-default__NeJ4p button-loading-undefined rs-btn rs-btn-default rs-btn-md"]').contains('Clubbed').click()
+          cy.get('.Button_button-default__NeJ4p').each(($x1,index,list)=>
+          { 
+            if(($x1.text()).includes('Clubbed'))
+           {
+            cy.get('.Button_button-default__NeJ4p').eq(index).click()
+           }
+        })
           cy.get('.rs-input').type(order);
           cy.get('.rs-input-group-addon').click();
           
@@ -253,7 +265,7 @@ cy.log(orderid)
 cy.intercept('POST','http://v2.nushop-dashboard.kaip.in/api/order-process/report/labels-v2/created').as('res')
 cy.get('.action-btns-wrapper > .Button_button-primary__9i0Rz').click()
 })
-// cy.get('.rs-modal-footer >').contains('Print Anyways').click()
+ cy.get('.rs-modal-footer >').contains('Print Anyways').click()
 
 //cross checking with olderids and AWB captured in EXpired section
 cy.get('@order').then((order)=>
@@ -300,8 +312,14 @@ cy.task('readPdf',PdfContent).should('contain', orderid)
 cy.task('readPdf',PdfContent).should('contain',awb)
 cy.get(':nth-child(2) > .tab').click();
 cy.get(':nth-child(3) > .rs-picker > .rs-picker-toggle').click().then(() => {
-cy.get('.rs-radio-checker > :nth-child(1) > .RadioPicker_radio-label__p6kzr').contains('Clubbed').click();
-cy.get('.rs-btn-toolbar > .Button_button-ghost__rieSu').click();
+  cy.get('.Button_button-default__NeJ4p').each(($x1,index,list)=>
+  { 
+    if(($x1.text()).includes('Clubbed'))
+   {
+    cy.get('.Button_button-default__NeJ4p').eq(index).click()
+   }
+})
+  cy.get('.rs-btn-toolbar > .Button_button-ghost__rieSu').click();
 
 })
 })

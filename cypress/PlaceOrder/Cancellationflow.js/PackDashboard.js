@@ -28,7 +28,7 @@ function stringToBinary(str) {
   beforeEach('Login',function()
      {
         cy.visit("http://v2.nushop-dashboard.kaip.in/login/");
-        cy.get('.rs-input').type('7908961320')
+        cy.get('.rs-input').type('9495760332')
         cy.get('.Button_button-primary__9i0Rz').contains('Generate OTP').click()
         cy.wait(2000)
         cy.get('.rs-input').type('0000') 
@@ -134,7 +134,13 @@ function stringToBinary(str) {
               //from here the testing in print starts
               //cy.get(':nth-child(1) > .tab').click();
                 cy.get('div[class="ButtonGroup_buttongroup-container__Q+BiA rs-btn-group"]').contains('Print').click()
-                cy.get('button[class="Button_button-default__NeJ4p button-loading-undefined rs-btn rs-btn-default rs-btn-md"]').contains('Single').click()
+                cy.get('.Button_button-default__NeJ4p').each(($x1,index,list)=>
+                { 
+                  if(($x1.text()).includes('Single'))
+                 {
+                  cy.get('.Button_button-default__NeJ4p').eq(index).click()
+                 }
+              })
                 cy.wait(7000);
       
                 // Access the aliased orderid outside the previous block
@@ -297,8 +303,14 @@ function stringToBinary(str) {
         //from here the testing in print starts         
           // Access the aliased orderid outside the previous bloc
           cy.get('div[class="ButtonGroup_buttongroup-container__Q+BiA rs-btn-group"]').contains('Print').click().then(()=>{
-          cy.get('div[class="ButtonGroup_buttongroup-container__Q+BiA rs-btn-group"]').contains('Clubbed').click()
+            cy.get('.Button_button-default__NeJ4p').each(($x1,index,list)=>
+            { 
+              if(($x1.text()).includes('Clubbed'))
+             {
+              cy.get('.Button_button-default__NeJ4p').eq(index).click()
+             }
           })
+                  })
 
           cy.get('@order1').then((order1)=>{
           cy.get('@order').then((order) => {
