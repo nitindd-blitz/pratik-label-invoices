@@ -4,7 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run:cancellation": "npx cypress run --spec \"cypress/PlaceOrder/Cancellationflow.js\"",
+    "run:SystemClubbing": "npx cypress run --spec \"cypress/PlaceOrder/SystemClubbing.js\"",
+    "run:processorder": "npx cypress run --spec \"cypress/PlaceOrder/processorder.js\"",
+    "run:ManualLP": "npx cypress run --spec \"cypress/PlaceOrder/ManualLP.js\"",
+    "run:ExpiredOrder": "npx cypress run --spec \"cypress/PlaceOrder/ExpiredOrder.js\"",
+    "run:Catalogue": "npx cypress run --spec \"cypress/PlaceOrder/Catalogue.js\"",
+    "run:BulkandManualOrder": "npx cypress run --spec \"cypress/PlaceOrder/BulkandManualOrder.js\""
   },
   "author": "",
   "license": "ISC",

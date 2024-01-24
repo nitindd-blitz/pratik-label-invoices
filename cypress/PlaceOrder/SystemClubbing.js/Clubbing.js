@@ -59,7 +59,7 @@ function stringToBinary(str) {
     cy.wait(50000)
     cy.reload()
     })
-    it('PlacementOrderSystemClubbingWebsiteflow',function()
+    it.only('PlacementOrderSystemClubbingWebsiteflow',function()
     {
       cy.visit('http://pratikj.nushop.kaip.in/')
       cy.wait(4000)

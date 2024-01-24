@@ -54,7 +54,7 @@ function stringToBinary(str) {
           {
            if(number<=5)
            {
-            cy.get('.ExpiredAWBOrdersCard_card__2yYch > :nth-child(2) > .rs-col-xxl-3 > .action-btns-wrapper > .Button_button-primary__9i0Rz').eq(number).click()
+            cy.get('.ExpiredAWBOrdersCard_card__2yYch > :nth-child(1) > .ExpiredAWBOrdersCard_card-cell-checkbox__NX5dd > .Flexbox_flex-column__cNkZ2 > .rs-checkbox > .rs-checkbox-checker > label > .rs-checkbox-wrapper').eq(number).click()
            }
           })
           cy.get('.Flexbox_align-top__Nx4Aj > .Button_button-primary__9i0Rz').click()
@@ -78,4 +78,5 @@ function stringToBinary(str) {
             cy.get('.rs-modal-footer > :nth-child(2)').click()
           })
           })
+          
 
