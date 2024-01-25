@@ -22,3 +22,4 @@ module.exports = defineConfig({
     specPattern: ["cypress/PlaceOrder/BulkandManualOrder.js/", "cypress/PlaceOrder/Catalogue.js/", "cypress/PlaceOrder/processorder.js/","cypress/PlaceOrder/ExpiredOrder.js","cypress/PlaceOrder/Cancellationflow.js","cypress/PlaceOrder/SystemClubbing.js","cypress/PlaceOrder/ManualLP.js"]
   },
 });
+
