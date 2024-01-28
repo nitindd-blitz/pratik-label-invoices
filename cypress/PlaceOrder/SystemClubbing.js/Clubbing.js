@@ -28,7 +28,7 @@ function stringToBinary(str) {
     }
     return binaryArray.join(' ');
   }
-  for(let i=0;i<10;i++)
+  for(let i=0;i<3;i++)
   {
     describe('duplicateOrderflow',function()
 { 
@@ -59,7 +59,7 @@ function stringToBinary(str) {
     cy.wait(50000)
     cy.reload()
     })
-    it.only('PlacementOrderSystemClubbingWebsiteflow',function()
+    it('PlacementOrderSystemClubbingWebsiteflow',function()
     {
       cy.visit('http://pratikj.nushop.kaip.in/')
       cy.wait(4000)

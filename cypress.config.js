@@ -9,9 +9,11 @@ const toHtml = promisify(pdf2html.html);
 
 module.exports = defineConfig({
   projectId: 'rsfpzk',
+  reporter: 'cypress-mochawesome-reporter',
   e2e: {
     supportFile: false,
     setupNodeEvents(on, config) {
+      require('cypress-mochawesome-reporter/plugin')(on),
       on('task', {
         downloadFile,
         readPdf,
